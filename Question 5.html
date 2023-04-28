@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Employee Registration Form</title>
+</head>
+
+<body>
+	<center>
+		<h1>Employee Registration Form</h1>
+		<form id="employeeForm" action="" method="post">
+			<label for="name">Name:</label>
+			<input type="text" id="name" name="name" required><br><br>
+
+			<label for="email">Email:</label>
+			<input type="email" id="email" name="email" required><br><br>
+
+			<label for="phone">Phone:</label>
+			<input type="tel" id="phone" name="phone" required><br><br>
+
+			<label for="address">Address:</label>
+			<textarea id="address" name="address" rows="4" cols="30" required></textarea><br><br>
+
+			<label for="gender">Gender:</label>
+			<input type="radio" id="male" name="gender" value="male" required>
+			<label for="male">Male</label>
+			<input type="radio" id="female" name="gender" value="female" required>
+			<label for="female">Female</label><br><br>
+
+			<label for="position">Position:</label>
+			<select id="position" name="position" required>
+				<option value="">Select position</option>
+				<option value="manager">Manager</option>
+				<option value="developer">Developer</option>
+				<option value="designer">Designer</option>
+			</select><br><br>
+
+			<input type="submit" value="Submit">
+		</form>
+
+		<script>
+			const form = document.getElementById("employeeForm");
+			const nameInput = document.getElementById("name");
+			const emailInput = document.getElementById("email");
+			const phoneInput = document.getElementById("phone");
+			const addressInput = document.getElementById("address");
+			const genderInputs = document.getElementsByName("gender");
+			const positionInput = document.getElementById("position");
+
+			form.addEventListener("submit", (event) => {
+				event.preventDefault();
+				let genderValue;
+				for (let i = 0; i < genderInputs.length; i++) {
+					if (genderInputs[i].checked) {
+						genderValue = genderInputs[i].value;
+						break;
+					}
+				}
+				console.log("Name:", nameInput.value);
+				console.log("Email:", emailInput.value);
+				console.log("Phone:", phoneInput.value);
+				console.log("Address:", addressInput.value);
+				console.log("Gender:", genderValue);
+				console.log("Position:", positionInput.value);
+				form.reset();
+			});
+		</script>
+	</center>
+</body>
+
+</html>
